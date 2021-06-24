@@ -1,17 +1,17 @@
-package firstProject;
+package basic;
 
 public class NumberExample {
 	public static void main(String[] args) {
 		byte math = 30;	// -128 ~ 127
 		byte eng = 50;
 		
-		// Á¤¼ö¿¬»êÀº int¸¦ ±âÁØÀ¸·Î ÇÔ
+		// ì •ìˆ˜ì—°ì‚°ì€ intë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•¨
 //		byte sum = math + eng;
 //		int sum = math + eng;
 
 		byte sum = (byte)(math + eng);
 		
-		System.out.println("µÎ Á¡¼öÀÇ ÇÕ : " + sum);
+		System.out.println("ë‘ ì ìˆ˜ì˜ í•© : " + sum);
 		
 	}
 }
