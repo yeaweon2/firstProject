@@ -11,7 +11,7 @@ public class AssignOperatorExample {
 		
 		val1--;
 		val1 = val1 - 3;
-		val1 -=3;
+		val1 -=3;	
 		
 		System.out.println(val1);
 		
