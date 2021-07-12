@@ -24,13 +24,30 @@ public class MarketControl implements MarketInf {
 	}
 
 	@Override
-	public void itemEdit(String nm, String tel, Gender gen, Item item) {
+	public Boolean itemEdit(String nm, String tel, Gender gen, Item item) {
+		Boolean chk = false;
 		
+		Iterator<Member> iter = members.iterator();
+		while(iter.hasNext()) {
+			Member mb = iter.next();
+			System.out.println(mb.getMemberNm().equals(nm) + " / " + mb.getMemberNm() + " / " + nm);
+			if(mb.getMemberNm().equals(nm)) {				
+				mb.setTel(tel);
+				mb.setGen(gen);
+				mb.setItems(item);
+				chk = true;
+				break;
+			}else {
+				chk = false;
+			}
+		}
+		return chk;
 	}
 
 	@Override
-	public void itemDel(String nm) {
-		
+	public Boolean itemDel(String nm) {
+		Boolean chk = false;
+		return chk;
 	}
 	
 	@Override

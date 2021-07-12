@@ -65,7 +65,25 @@ public class MarketApp {
 	}
 	
 	public void itemEdit() {
+		String name = scanString("이름 입력 >> ");
+		Set<Member> mb = srv.MemberList();
+		Iterator<Member> iter = mb.iterator();
+		Boolean editChk = false;
 		
+		while(iter.hasNext()) {		
+			if(iter.next().getMemberNm().equals(name)) {
+				String tel = scanString("연락처 입력 >> ");
+				Gender gen = scanGen("성별 입력(1.남자/2.여자 ) >> ");
+				Item item = scanItem("품목을 입력해주세요------->>");
+				editChk = srv.itemEdit(name, tel, gen, item);
+				if(editChk) {
+					System.out.println("※ 수정이 완료되었습니다.");
+					break;
+				}else {
+					System.out.println("※ 해당 회원정보가 없습니다.");
+				}
+			}
+		}		
 	}
 	
 	public void itemDel() {
@@ -78,7 +96,7 @@ public class MarketApp {
 			searchMenuView();
 			String sel = scn.nextLine();
 			if(sel.equals("1") || sel.equals("전체조회")) {
-				members = srv.MemberList();
+				Set<Member> members = srv.MemberList();
 				for( Member mb : members ) {
 					if( mb != null ) {
 						System.out.println(mb.toString());
@@ -100,28 +118,24 @@ public class MarketApp {
 	}
 	
 	public void memberDetail() {
-		members.clear();
 		String name = scanString("이름 입력 >> ");
-		members = srv.MemberItemList(name);
-		Iterator<Member> iter = members.iterator();
+//		Set<Member> mb = srv.MemberItemList(name);
+		Set<Member> mb = srv.MemberList();
+		Iterator<Member> iter = mb.iterator();
 		int a = 0;
 		while(iter.hasNext()) {
+//			items.add(iter.next().getItems());		
 			if(iter.next().getMemberNm().equals(name)) {
-				items.add(iter.next().getItems());	
+				items.add(iter.next().getItems());
 			}
 			a++;
 		}
 		
-		System.out.println("========================" + a );		
+		System.out.println(a + ">==================================");		
 		for(int i = 0; i < items.size(); i++) {
-			
 			System.out.println( (i+1) + ". 품목명 : " + items.get(i).getItemNm() + " / 갯수 : " + items.get(i).getItemCnt() + " / 금액 : " + items.get(i).getItemAmt());
-			
 		}
-		System.out.println("========================");
-		
-		
-		
+		System.out.println("==================================");
 	}
 	
 	public String scanString(String arg) {

@@ -55,13 +55,15 @@ public class Member {
 
 	@Override
 	public int hashCode() {
-		return this.getMemberNm().hashCode();
+		//return this.getMemberNm().hashCode();
+		return this.getMemberNm().hashCode()+this.getTel().hashCode()+this.getGen().hashCode()+this.getItems().hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Member) {
 			Member mb = (Member) obj;
+			System.out.println(mb.memberNm.equals(memberNm));
 			return mb.memberNm.equals(memberNm);
 		}else {
 			return false;

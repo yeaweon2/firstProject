@@ -8,9 +8,9 @@ public interface MarketInf {
 
 	public void itemBuy(String nm, String tel, Gender gen, Item item);
 	
-	public void itemEdit(String nm, String tel, Gender gen, Item item);
+	public Boolean itemEdit(String nm, String tel, Gender gen, Item item);
 	
-	public void itemDel(String nm);
+	public Boolean itemDel(String nm);
 	
 	public Set<Member> MemberList();
 	
